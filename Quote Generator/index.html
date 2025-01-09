@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quote Of The Day</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="quote-box">
+      <h2>Quote of the day</h2>
+      <blockquote id="quote">Loading...</blockquote>
+      <span id="author">Loading...</span>
+      <div>
+        <button onclick="getquote(apiUrl)">New Quote</button>
+        <button>
+          <img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" />
+          Tweet
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const quote = document.getElementById("quote");
+      const author = document.getElementById("author");
+      const apiUrl = "https://qapi.vercel.app/api/random";
+
+      async function getquote(url) {
+        const response = await fetch(url);
+        let data = await response.json();
+        console.log(data);
+
+        quote.innerHTML = data.quote;
+        author.innerHTML = data.author;
+      }
+      getquote(apiUrl);
+    </script>
+  </body>
+</html>
