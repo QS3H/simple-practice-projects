@@ -6,10 +6,11 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #ffffff;
+  background-color: #444444;
   height: 100vh;
   display: grid;
   place-content: top;
+  color: #fff;
 }
 
 h1 {
