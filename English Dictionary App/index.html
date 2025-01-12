@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>English Dictionary App</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <h1 class="heading">English Dictionary</h1>
+        <input
+          type="text"
+          class="input"
+          id="input"
+          placeholder="Search a Word"
+        />
+        <p class="information-text" id="info-text">
+          Type a word and press enter
+        </p>
+        <div class="meaning-container" id="meaning-container">
+          <p>Word Title: <span id="title" class="title">___</span></p>
+          <p>Meaning: <span id="meaning" class="meaning">___</span></p>
+          <div>
+            <audio id="audio" src="" controls></audio>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
