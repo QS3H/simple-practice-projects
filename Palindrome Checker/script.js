@@ -6,6 +6,7 @@ const alertEl = document.getElementById("alert-box");
 checkBtnEl.addEventListener("click", () => {
   let inputText = inputTextEl.value;
   if (inputText === "") {
+    alertEl.textContent = "Please input a value";
     alert("Please input a value");
   } else if (inputText.length === 1) {
     resultEl.textContent = `${inputText} is a palindrome`;
