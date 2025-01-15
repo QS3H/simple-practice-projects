@@ -1,0 +1,80 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, #00c9ff 0%, #92fe9d 100%);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.container {
+  min-width: 450px;
+  padding: 3.5rem 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 20px 25px rgb(0, 0, 0, 0.18);
+  background-color: rgba(255, 255, 255, 0.3);
+  font-size: 1rem;
+  margin: 0 2rem;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  text-align: center;
+  background: linear-gradient(90deg, #00c9ff 0%, #92fe9d 100%);
+  color: #333;
+  border-radius: 8px;
+}
+
+input {
+  width: 65%;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid #00c9ff;
+  padding: 1rem 0.5rem;
+  font-weight: 400;
+  outline: none;
+}
+
+input:focus {
+  border-bottom: 2px solid #92fe9d;
+}
+
+button {
+  width: 30%;
+  padding: 1rem 1.5rem;
+  float: right;
+  background: linear-gradient(90deg, #00c9ff 0%, #92fe9d 100%);
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+button:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+p {
+  margin-top: 2rem;
+  text-align: center;
+  color: #00c9ff;
+  font-weight: 500;
+}
+
+#alert-box {
+  margin-top: 2rem;
+  text-align: center;
+  color: rgb(200, 0, 0);
+  font-weight: 500;
+}
