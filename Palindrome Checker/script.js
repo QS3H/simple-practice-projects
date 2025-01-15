@@ -23,9 +23,9 @@ const checkPalindrome = (inputText) => {
 
   for (let i = 0; i < halfLength; i++) {
     if (newText[i] !== newText[textLength - 1 - i]) {
-      result.textContent = `${inputText} is not a palindrome`;
+      result.textContent = `(${inputText}) is not a palindrome`;
       return;
     }
-    result.textContent = `${inputText} is a palindrome`;
+    result.textContent = `(${inputText}) is a palindrome`;
   }
 };
