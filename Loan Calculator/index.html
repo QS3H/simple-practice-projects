@@ -14,18 +14,18 @@
         <p>
           Loan Amount $
           <input
-            onchange="calculatePayment()"
+            onchange="calculateLoan()"
             type="number"
             id="loan-amount"
             min="1"
-            max="10000000"
+            max="1000000"
             placeholder="Enter Loan Amount"
           />
         </p>
         <p>
           Interest Rate %
           <input
-            onchange="calculatePayment()"
+            onchange="calculateLoan()"
             type="number"
             id="interest-rate"
             min="0"
@@ -37,7 +37,7 @@
         <p>
           Months to Pay
           <input
-            onchange="calculatePayment()"
+            onchange="calculateLoan()"
             type="number"
             id="months-to-pay"
             min="6"
@@ -45,7 +45,7 @@
             placeholder="Number of months to pay"
           />
         </p>
-        <p class="payment">Monthly Payment:</p>
+        <p class="payment" id="monthly-payment">Monthly Payment:</p>
       </div>
     </main>
   </body>
