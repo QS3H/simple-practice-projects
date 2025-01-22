@@ -45,6 +45,8 @@ h1 {
     rgba(0, 212, 255, 1) 100%
   );
   border-radius: 8px;
+  font-size: 2rem;
+  padding: 0.5rem;
 }
 
 input {
