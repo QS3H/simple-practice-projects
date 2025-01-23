@@ -1,0 +1,57 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(300deg, oklch(70% 0.5 340), oklch(90% 0.3 200));
+  display: grid;
+  min-height: 100vh;
+  place-content: center;
+  color: rgb(20, 0, 94);
+}
+
+.container {
+  min-width: 25rem;
+  margin: 0 2rem;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(300deg, oklch(70% 0.5 340), oklch(90% 0.3 200));
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+input {
+  padding: 0.5rem;
+  width: 70%;
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  outline-color: rgb(27, 0, 124);
+}
+
+.error {
+  color: red;
+}
