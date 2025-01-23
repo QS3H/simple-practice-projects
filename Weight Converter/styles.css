@@ -23,6 +23,7 @@ body {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  font-weight: 500;
 }
 
 h1 {
@@ -50,8 +51,15 @@ input {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   outline-color: rgb(27, 0, 124);
+  transition: all 0.3s;
+}
+
+input:hover {
+  transform: scale(1.01);
+  box-shadow: 0 5px 10px rgb(27, 0, 124, 0.3);
 }
 
 .error {
   color: red;
+  margin-top: 0.5rem;
 }
