@@ -31,6 +31,7 @@ h1 {
   background: linear-gradient(90deg, #00c9ff 0%, #92fe9d 100%);
   color: #333;
   border-radius: 8px;
+  padding: 0.5rem;
 }
 
 input {
