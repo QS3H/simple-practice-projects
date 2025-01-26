@@ -39,16 +39,16 @@ body {
   padding: 1rem 2rem;
   font-size: 1.125rem;
   border: 0;
-  outline: 0;
   background-color: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.5);
   margin: 1rem;
   transition: all 0.3s;
+  outline: 1px;
+  outline-style: inset;
 }
 
 .input:hover {
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.3);
-  transform: scale(1.02);
+  outline-color: rgba(252, 70, 107, 1);
 }
 
 .btn {
