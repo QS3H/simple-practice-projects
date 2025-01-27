@@ -22,7 +22,13 @@ body {
   width: 450px;
   height: 520px;
   border-radius: 10px;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s;
+}
+
+.calendar:hover {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+  transform: scale(1.02);
 }
 
 .month {
@@ -38,7 +44,7 @@ body {
 }
 
 .month h1 {
-  font-size: 2em;
+  font-size: 1.8rem;
   text-transform: uppercase;
   font-weight: 400;
 }
@@ -78,7 +84,7 @@ body {
 .days div:hover:not(.empty) {
   color: white;
   cursor: pointer;
-  border: 2px solid gray;
+  border: 2px solid #0093e9;
 }
 
 .today {
