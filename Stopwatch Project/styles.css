@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #f0f0f0;
+  background: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
   font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@ body {
   font-size: 7rem;
   font-weight: 700;
   text-shadow: 2px 2px #0099ff83;
-  color: #0099ff;
+  color: #003f69;
   width: 600px;
   text-align: center;
   margin: 40px auto;
@@ -31,7 +31,7 @@ body {
 }
 
 button {
-  background-color: #0099ff;
+  background-color: #003f69;
   color: #fff;
   border: none;
   font-size: 2rem;
