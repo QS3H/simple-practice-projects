@@ -3,7 +3,29 @@ const quoteElement = document.getElementById("quote");
 const quoteInput = document.getElementById("input");
 const timerElement = document.getElementById("timer");
 
-quoteElement.addEventListener("input", () => {});
+quoteInput.addEventListener("input", () => {
+  const quoteArray = quoteElement.querySelectorAll("span");
+  const quoteValue = quoteInput.value.split("");
+  let correct = true;
+
+  quoteArray.forEach((charSpan, index) => {
+    const character = quoteValue[index];
+    if (character === undefined) {
+      charSpan.classList.remove("correct");
+      charSpan.classList.remove("incorrect");
+      correct = false;
+    } else if (character === charSpan.innerText) {
+      charSpan.classList.add("correct");
+      charSpan.classList.remove("incorrect");
+    } else {
+      charSpan.classList.remove("correct");
+      charSpan.classList.add("incorrect");
+      correct = false;
+    }
+  });
+
+  if (correct) renderQuote();
+});
 
 function getRandomQuote() {
   return fetch(randomQuoteApi)
@@ -35,10 +57,25 @@ async function renderQuote() {
       quoteElement.appendChild(charSpan);
     });
     quoteInput.value = null;
+    timer();
   } catch (error) {
     console.error("Error fetching quote:", error);
     quoteElement.innerText = "Failed to load quote. Please try again.";
   }
+}
+
+let startTime;
+function timer() {
+  timerElement.innerText = 0;
+  startTime = new Date();
+
+  setInterval(() => {
+    timerElement.innerText = getTime();
+  }, 1000);
+}
+
+function getTime() {
+  return Math.floor((new Date() - startTime) / 1000);
 }
 
 renderQuote();
