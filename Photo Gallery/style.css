@@ -16,7 +16,7 @@ body {
 
 .container {
   background-color: aliceblue;
-  padding: 20px;
+  padding: 2rem;
   border-radius: 5px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   width: 50%;
@@ -51,7 +51,7 @@ h2 {
 
 .btn {
   text-transform: uppercase;
-  width: 250px;
+  width: 100%;
   height: 45px;
   margin: 20px 0;
   font-size: 18px;
