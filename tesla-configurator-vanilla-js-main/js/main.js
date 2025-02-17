@@ -11,6 +11,21 @@ function handleTopBarOnScroll() {
   topBar.classList.toggle("hidden-bar", !atTop);
 }
 
+// Image Mapping
+const exteriorImagesMapping = {
+  "Stealth Grey": "./images/model-y-stealth-grey.jpg",
+  "Pearl White": "./images/model-y-pearl-white.jpg",
+  "Deep Blue": "./images/model-y-deep-blue-metallic.jpg",
+  "Solid Black": "./images/model-y-solid-black-grey.jpg",
+  "Ultra Red": "./images/model-y-ultra-red.jpg",
+  "Quick silver": "./images/model-y-quicksilver.jpg",
+};
+
+const interiorImagesMapping = {
+  Dark: "./images/model-y-interior-dark.jpg",
+  Light: "./images/model-y-interior-light.jpg",
+};
+
 // Handle Color Selection
 function handleColorSelection(event) {
   let button;
