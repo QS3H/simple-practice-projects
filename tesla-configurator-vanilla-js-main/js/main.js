@@ -52,8 +52,8 @@ function handleColorSelection(event) {
 
   // Update Exterior Image
   if (event.currentTarget === exteriorColors) {
-    const color = button.querySelector("img").alt;
-    exteriorImage.src = exteriorImagesMapping[color];
+    selectedColor = button.querySelector("img").alt;
+    updateExteriorImage();
   }
 
   // Update Interior Image
@@ -64,7 +64,17 @@ function handleColorSelection(event) {
 }
 
 // Update exterior image based on color and wheels
-function updateExteriorImage() {}
+function updateExteriorImage() {
+  const performanceWheels = selectedOptions["Performance Wheels"]
+    ? "-performance"
+    : "";
+  const colorKey =
+    selectedColor in exteriorImagesMapping ? selectedColor : "Stealth Grey";
+  exteriorImage.src = exteriorImagesMapping[colorKey].replace(
+    ".jpg",
+    `${performanceWheels}.jpg`
+  );
+}
 
 // Handle Wheel Selection
 function handleWheelSelection(event) {
@@ -76,10 +86,10 @@ function handleWheelSelection(event) {
     event.target.classList.add("bg-gray-700", "text-white");
 
     // Keep selected wheels on exterior color change
-    const selectedWheels = event.target.textContent.includes("Performance");
-    exteriorImage.src = selectedWheels
-      ? "./images/model-y-stealth-grey-performance.jpg"
-      : "./images/model-y-stealth-grey.jpg";
+    selectedOptions["Performance Wheels"] =
+      event.target.textContent.includes("Performance");
+
+    updateExteriorImage();
   }
 }
 
