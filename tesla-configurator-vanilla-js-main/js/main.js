@@ -4,6 +4,7 @@ const interiorColors = document.getElementById("interior-buttons");
 const exteriorImage = document.getElementById("exterior-image");
 const interiorImage = document.getElementById("interior-image");
 const wheelButtons = document.getElementById("wheel-buttons");
+const performanceButton = document.getElementById("performance-btn");
 
 let selectedColor = "Stealth Grey";
 const selectedOptions = {
@@ -93,6 +94,12 @@ function handleWheelSelection(event) {
   }
 }
 
+// Performance Package Selection
+function handlePerformancePackageSelection(event) {
+  performanceButton.classList.toggle("bg-gray-700");
+  performanceButton.classList.toggle("text-white");
+}
+
 // Event Listeners
 window.addEventListener("scroll", () =>
   requestAnimationFrame(handleTopBarOnScroll)
@@ -100,3 +107,4 @@ window.addEventListener("scroll", () =>
 exteriorColors.addEventListener("click", handleColorSelection);
 interiorColors.addEventListener("click", handleColorSelection);
 wheelButtons.addEventListener("click", handleWheelSelection);
+performanceButton.addEventListener("click", handlePerformancePackageSelection);
