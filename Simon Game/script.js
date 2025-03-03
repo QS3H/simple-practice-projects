@@ -1,79 +1,112 @@
+// Constants
+const BUTTON_COLORS = ["red", "blue", "green", "yellow"];
+const DELAY_TIMES = {
+  sequence: 1000,
+  flash: 100,
+  gameOver: 200,
+};
 
-var buttonColours = ["red", "blue", "green", "yellow"];
+// Game state
+const gameState = {
+  pattern: [],
+  userPattern: [],
+  started: false,
+  level: 0,
+};
 
-var gamePattern = [];
-var userClickedPattern = [];
+// Cache DOM elements
+const $levelTitle = $("#level-title");
+const $buttons = $(".btn");
+const $body = $("body");
 
-var started = false;
-var level = 0;
-
-$(document).keypress(function() {
-  if (!started) {
-    $("#level-title").text("Level " + level);
-    nextSequence();
-    started = true;
+// Event handlers
+$(document).keypress(() => {
+  if (!gameState.started) {
+    startGame();
   }
 });
 
-$(".btn").click(function() {
+$buttons.click(function () {
+  if (!gameState.started) return;
 
-  var userChosenColour = $(this).attr("id");
-  userClickedPattern.push(userChosenColour);
-
-  playSound(userChosenColour);
-  animatePress(userChosenColour);
-
-  checkAnswer(userClickedPattern.length-1);
+  const userColor = $(this).attr("id");
+  handleUserInput(userColor);
 });
 
-function checkAnswer(currentLevel) {
-
-    if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
-      if (userClickedPattern.length === gamePattern.length){
-        setTimeout(function () {
-          nextSequence();
-        }, 1000);
-      }
-    } else {
-      playSound("wrong");
-      $("body").addClass("game-over");
-      $("#level-title").text("Game Over, Press Any Key to Restart");
-
-      setTimeout(function () {
-        $("body").removeClass("game-over");
-      }, 200);
-
-      startOver();
-    }
+// Game logic
+function handleUserInput(color) {
+  gameState.userPattern.push(color);
+  playSound(color);
+  animatePress(color);
+  checkAnswer(gameState.userPattern.length - 1);
 }
 
+function checkAnswer(currentLevel) {
+  const isCorrect =
+    gameState.pattern[currentLevel] === gameState.userPattern[currentLevel];
+
+  if (!isCorrect) {
+    handleGameOver();
+    return;
+  }
+
+  if (gameState.userPattern.length === gameState.pattern.length) {
+    setTimeout(nextSequence, DELAY_TIMES.sequence);
+  }
+}
 
 function nextSequence() {
-  userClickedPattern = [];
-  level++;
-  $("#level-title").text("Level " + level);
-  var randomNumber = Math.floor(Math.random() * 4);
-  var randomChosenColour = buttonColours[randomNumber];
-  gamePattern.push(randomChosenColour);
+  gameState.userPattern = [];
+  gameState.level++;
+  $levelTitle.text(`Level ${gameState.level}`);
 
-  $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
-  playSound(randomChosenColour);
+  const randomColor =
+    BUTTON_COLORS[Math.floor(Math.random() * BUTTON_COLORS.length)];
+  gameState.pattern.push(randomColor);
+
+  $(`#${randomColor}`)
+    .fadeIn(DELAY_TIMES.flash)
+    .fadeOut(DELAY_TIMES.flash)
+    .fadeIn(DELAY_TIMES.flash);
+  playSound(randomColor);
 }
 
-function animatePress(currentColor) {
-  $("#" + currentColor).addClass("pressed");
-  setTimeout(function () {
-    $("#" + currentColor).removeClass("pressed");
-  }, 100);
+function handleGameOver() {
+  playSound("wrong");
+  $body.addClass("game-over");
+  $levelTitle.text("Game Over, Press Any Key to Restart");
+
+  setTimeout(() => {
+    $body.removeClass("game-over");
+  }, DELAY_TIMES.gameOver);
+
+  startOver();
+}
+
+// UI and Audio
+function animatePress(color) {
+  const $button = $(`#${color}`);
+  $button.addClass("pressed");
+  setTimeout(() => $button.removeClass("pressed"), DELAY_TIMES.flash);
 }
 
 function playSound(name) {
-  var audio = new Audio("sounds/" + name + ".mp3");
-  audio.play();
+  new Audio(`sounds/${name}.mp3`).play();
+}
+
+// Game state management
+function startGame() {
+  gameState.started = true;
+  gameState.level = 0;
+  $levelTitle.text(`Level ${gameState.level}`);
+  nextSequence();
 }
 
 function startOver() {
-  level = 0;
-  gamePattern = [];
-  started = false;
+  Object.assign(gameState, {
+    pattern: [],
+    userPattern: [],
+    started: false,
+    level: 0,
+  });
 }
