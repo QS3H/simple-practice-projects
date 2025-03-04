@@ -15,7 +15,7 @@ const gameState = {
 };
 
 // Cache DOM elements
-const $levelTitle = $("#level-title");
+const $levelTitle = $("#main-title");
 const $buttons = $(".btn");
 const $body = $("body");
 
@@ -23,6 +23,9 @@ const $body = $("body");
 $(document).keypress(() => {
   if (!gameState.started) {
     startGame();
+  } else {
+    // Add level on keypress during game
+    addLevel();
   }
 });
 
@@ -100,6 +103,22 @@ function startGame() {
   gameState.level = 0;
   $levelTitle.text(`Level ${gameState.level}`);
   nextSequence();
+}
+
+function addLevel() {
+  if (gameState.started) {
+    gameState.level++;
+    $levelTitle.text(`Level ${gameState.level}`);
+    const randomColor =
+      BUTTON_COLORS[Math.floor(Math.random() * BUTTON_COLORS.length)];
+    gameState.pattern.push(randomColor);
+
+    $(`#${randomColor}`)
+      .fadeIn(DELAY_TIMES.flash)
+      .fadeOut(DELAY_TIMES.flash)
+      .fadeIn(DELAY_TIMES.flash);
+    playSound(randomColor);
+  }
 }
 
 function startOver() {
