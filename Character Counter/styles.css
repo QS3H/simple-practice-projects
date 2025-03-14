@@ -10,7 +10,18 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: hsl(30, 100%, 50%);
+  --hdr-gradient: radial-gradient(
+    farthest-corner circle at 100% 0% in oklch,
+    color(display-p3 25% 25% 100%) 0%,
+    color(display-p3 100% 85% 30%) 100%
+  );
+  --sdr-gradient: radial-gradient(
+    farthest-corner circle at 100% 0%,
+    #4040ff 0%,
+    #ffd713 100%
+  );
+
+  background: var(--hdr-gradient);
   margin: 0;
 }
 
