@@ -20,7 +20,8 @@ body {
   background-color: #141414;
   color: lightgray;
   width: 450px;
-  height: 520px;
+  min-height: 520px;
+  height: auto;
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
   transition: all 0.3s;
@@ -65,8 +66,9 @@ body {
 
 .days {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1rem;
   padding: 2px;
 }
 
@@ -74,11 +76,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(100% / 7);
-  height: 50px;
+  height: 45px;
   font-weight: 500;
   font-size: 1em;
-  margin-bottom: 1rem;
 }
 
 .days div:hover:not(.empty) {
