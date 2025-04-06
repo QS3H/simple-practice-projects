@@ -33,7 +33,7 @@ h1 {
 
 .form-group {
   position: relative;
-  padding-bottom: 1.2rem;
+  padding-bottom: 1.8rem;
   margin-bottom: 1rem;
 }
 
@@ -76,7 +76,7 @@ h1 {
   visibility: visible;
 }
 
-.form button {
+.register-button {
   cursor: pointer;
   border: 2px solid #3498db;
   background-color: #3498db;
@@ -89,6 +89,19 @@ h1 {
   transition: background-color 0.3s ease-in-out;
 }
 
-.form button:hover {
+.register-button:hover {
   background-color: #2980b9;
+}
+
+.reset-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background-color: #e0e0e0;
 }
