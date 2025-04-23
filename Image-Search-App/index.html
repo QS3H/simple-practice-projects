@@ -3,18 +3,187 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Imgae Search App</title>
+    <!-- Missing meta description for SEO -->
+    <meta
+      name="description"
+      content="Search and discover high-quality images from Unsplash with this image search application"
+    />
+    <!-- Missing favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <title>Image Search App</title>
+    <!-- No defer attribute on external CSS -->
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
-    <h1>Image Search App</h1>
-    <form>
-      <input type="text" id="search-input" placeholder="Search for images..." />
-      <button id="search-button">Search</button>
-    </form>
-    <div class="search-results">
+    <header>
+      <div class="app-header">
+        <h1>Image Search App</h1>
+        <button id="theme-toggle" aria-label="Toggle dark/light mode">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <form id="search-form" aria-label="Search for images">
+        <div class="search-container">
+          <label for="search-input" class="sr-only">Search</label>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search for images..."
+            aria-required="true"
+          />
+          <button id="search-button" type="submit">
+            <i class="fas fa-search" aria-hidden="true"></i> Search
+          </button>
+        </div>
+
+        <div class="filter-container">
+          <div
+            class="categories"
+            role="radiogroup"
+            aria-label="Image categories"
+          >
+            <button
+              type="button"
+              class="category-btn active"
+              data-category="all"
+              aria-pressed="true"
+            >
+              All
+            </button>
+            <button
+              type="button"
+              class="category-btn"
+              data-category="nature"
+              aria-pressed="false"
+            >
+              Nature
+            </button>
+            <button
+              type="button"
+              class="category-btn"
+              data-category="animals"
+              aria-pressed="false"
+            >
+              Animals
+            </button>
+            <button
+              type="button"
+              class="category-btn"
+              data-category="food"
+              aria-pressed="false"
+            >
+              Food
+            </button>
+            <button
+              type="button"
+              class="category-btn"
+              data-category="travel"
+              aria-pressed="false"
+            >
+              Travel
+            </button>
+            <button
+              type="button"
+              class="category-btn"
+              data-category="architecture"
+              aria-pressed="false"
+            >
+              Architecture
+            </button>
+          </div>
+        </div>
+      </form>
+    </header>
+
+    <main>
+      <div id="status-message" aria-live="polite"></div>
+
+      <section aria-label="Search results">
+        <div class="search-results">
+          <!-- Results will be populated by JavaScript -->
+        </div>
+
+        <div class="loading-indicator" aria-hidden="true">
+          <div class="spinner"></div>
+          <p>Loading images...</p>
+        </div>
+
+        <button
+          id="show-more-button"
+          aria-label="Load more images"
+          style="display: none"
+        >
+          Show More
+        </button>
+      </section>
+
+      <section id="favorites-container" aria-label="Favorite images">
+        <div class="favorites-header">
+          <h2>Favorites</h2>
+          <button id="toggle-favorites" aria-label="Toggle favorites display">
+            <i class="fas fa-heart" aria-hidden="true"></i>
+            <span class="count-badge" aria-label="Number of favorites"></span>
+          </button>
+        </div>
+        <div class="favorites-grid">
+          <!-- Favorites will be populated by JavaScript -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Image Modal -->
+    <div
+      id="image-modal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      hidden
+    >
+      <div class="modal-content">
+        <button class="close-modal" aria-label="Close modal">&times;</button>
+        <img id="modal-img" src="" alt="" />
+        <div class="modal-details">
+          <h3 id="modal-title"></h3>
+          <p id="modal-description"></p>
+          <div class="modal-actions">
+            <a id="modal-download" href="#" target="_blank" download>
+              <i class="fas fa-download" aria-hidden="true"></i> Download
+            </a>
+            <button id="modal-favorite">
+              <i class="far fa-heart" aria-hidden="true"></i>
+              <span>Add to Favorites</span>
+            </button>
+            <a id="modal-photographer" href="#" target="_blank">
+              <i class="fas fa-camera" aria-hidden="true"></i>
+              <span>Photographer</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-    <button id="show-more-button">Show More</button>
+
+    <footer>
+      <p>
+        Powered by
+        <a href="https://unsplash.com/" target="_blank" rel="noopener"
+          >Unsplash API</a
+        >
+      </p>
+      <p>&copy; <span id="current-year"></span> Image Search App</p>
+    </footer>
+
+    <!-- Toast notification container -->
+    <div id="toast-container" aria-live="polite"></div>
+
     <script src="script.js"></script>
   </body>
 </html>
