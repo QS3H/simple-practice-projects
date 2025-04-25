@@ -8,12 +8,41 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <header>
+      <h1>Speed Typing Game</h1>
+      <div class="user-setup">
+        <input type="text" id="username" placeholder="Enter your name" maxlength="16" />
+        <select id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <button id="start-btn">Start Game</button>
+      </div>
+    </header>
     <main>
-      <div class="timer" id="timer"></div>
+      <div class="stats">
+        <span>Time: <span id="timer">0</span>s</span>
+        <span>WPM: <span id="wpm">0</span></span>
+        <span>Accuracy: <span id="accuracy">100</span>%</span>
+      </div>
+      <div class="progress-bar" id="progress-bar"><div class="progress" id="progress"></div></div>
       <div class="container">
         <div class="quote" id="quote"></div>
-        <textarea class="input" id="input" autofocus></textarea>
+        <textarea class="input" id="input" autofocus disabled></textarea>
       </div>
+      <div id="motivational-message"></div>
+      <div class="leaderboard-modal" id="leaderboard-modal">
+        <div class="leaderboard-content">
+          <h2>Leaderboard</h2>
+          <ul id="leaderboard-list"></ul>
+          <button id="close-leaderboard">Close</button>
+        </div>
+      </div>
+      <button id="show-leaderboard">Show Leaderboard</button>
     </main>
+    <footer>
+      <p>Made with ❤️ for coding practice</p>
+    </footer>
   </body>
 </html>

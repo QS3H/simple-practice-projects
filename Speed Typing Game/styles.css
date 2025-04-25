@@ -5,64 +5,257 @@
   box-sizing: border-box;
 }
 
+/* --- Enhanced Colorful Modern UI --- */
+:root {
+  --primary: #4f8a8b;
+  --secondary: #72b5a4;
+  --accent: #fbd46d;
+  --success: #5edb8a;
+  --error: #ff6363;
+  --background: linear-gradient(120deg, #dbe6e4 0%, #b7cbe3 100%);
+  --card-bg: rgba(255,255,255,0.98);
+  --input-bg: #f7fafc;
+  --input-border: #b7cbe3;
+  --shadow: 0 8px 32px 0 rgba(79,138,139,0.10);
+}
+
 body {
-  background-image: linear-gradient(62deg, hsl(22, 100%, 35%) 0%, #8d6700 100%);
-  display: flex;
+  background: var(--background);
   min-height: 100vh;
-  justify-content: center;
-  text-align: center;
-  color: #492815;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  color: #2d254c;
+  transition: background 0.6s;
+}
+
+header {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #fff;
+  border-radius: 1.2rem 1.2rem 0 0;
+  box-shadow: var(--shadow);
+  width: 100vw;
+  max-width: 700px;
+  margin-bottom: 1rem;
+  padding: 2rem 0 1rem 0;
+  text-align: center;
+}
+header h1 {
+  font-size: 2.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 0.7rem;
+  text-shadow: 0 2px 10px rgba(79,138,139,0.18);
+  text-align: center;
+}
+.user-setup {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.user-setup input, .user-setup select {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid var(--input-border);
+  background: var(--input-bg);
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(79,138,139,0.04);
+  transition: border 0.2s;
+}
+.user-setup input:focus, .user-setup select:focus {
+  border: 1.5px solid var(--accent);
+  outline: none;
+}
+.user-setup button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  padding: 0.55rem 1.4rem;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(251,180,109,0.09);
+  transition: background 0.2s, color 0.2s;
+}
+.user-setup button:hover {
+  background: var(--secondary);
+  color: #fff;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 2.2rem;
+  font-size: 1.2rem;
+  margin-bottom: 1.1rem;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.progress-bar {
+  width: 100%;
+  max-width: 600px;
+  height: 14px;
+  background: #e3e6f3;
+  border-radius: 7px;
+  margin: 0 auto 1.2rem auto;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(79,138,139,0.07);
+}
+.progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--secondary) 100%);
+  transition: width 0.2s;
+  border-radius: 7px;
 }
 
 .container {
-  background-color: #fbab7e;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  max-width: 90%;
+  background: var(--card-bg);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  border-radius: 1.2rem;
+  max-width: 95vw;
   width: 600px;
-  margin: 1rem 1rem;
-  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
-}
-
-.timer {
-  position: relative;
-  top: -10rem;
-  font-size: 3rem;
-  font-weight: bold;
+  margin: 1rem auto;
+  box-shadow: var(--shadow);
 }
 
 .quote {
-  margin-bottom: 1rem;
-  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 500;
   margin-top: 1rem;
+  letter-spacing: 0.5px;
+  color: #3a2d6c;
+  min-height: 2.5rem;
+  word-break: break-word;
 }
 
 .input {
-  background-color: transparent;
-  border: 2px solid #d6946e;
+  background: var(--input-bg);
+  border: 2px solid var(--input-border);
   outline: none;
   width: 100%;
-  height: 10rem;
+  height: 9rem;
   margin: auto;
   resize: none;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  font-size: 1.1rem;
+  border-radius: 0.7rem;
+  color: #2d254c;
+  box-shadow: 0 2px 8px rgba(79,138,139,0.04);
+  transition: border 0.2s;
 }
-
 .input:focus {
-  border-color: #492815;
+  border-color: var(--accent);
 }
 
 .correct {
-  color: green;
+  color: var(--success);
+  font-weight: bold;
+  background: #e7fbe9;
+  border-radius: 3px;
+  padding: 0 2px;
 }
 
 .incorrect {
-  color: red;
+  color: var(--error);
   text-decoration: underline;
+  background: #ffe3ed;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+#motivational-message {
+  margin: 1.5rem 0 0.7rem 0;
+  font-size: 1.18rem;
+  font-style: italic;
+  color: var(--secondary);
+  min-height: 1.7rem;
+  text-align: center;
+  transition: opacity 0.3s;
+}
+
+.leaderboard-modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(79,138,139,0.17);
+  justify-content: center;
+  align-items: center;
+}
+.leaderboard-modal.active {
+  display: flex;
+}
+.leaderboard-content {
+  background: #fff9f2;
+  padding: 2.4rem 2rem 2rem 2rem;
+  border-radius: 1.2rem;
+  min-width: 280px;
+  box-shadow: 0 8px 32px 0 rgba(79,138,139,0.12);
+  text-align: center;
+}
+#leaderboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.1rem 0;
+}
+#leaderboard-list li {
+  padding: 0.35rem 0;
+  font-size: 1.13rem;
+}
+#show-leaderboard {
+  margin-top: 1.3rem;
+  padding: 0.6rem 1.4rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(79,138,139,0.09);
+  transition: background 0.2s;
+}
+#show-leaderboard:hover {
+  background: var(--accent);
+  color: #fff;
+}
+#close-leaderboard {
+  margin-top: 1.1rem;
+  padding: 0.5rem 1.1rem;
+  background: var(--error);
+  color: #fff;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+footer {
+  margin-top: 2.5rem;
+  color: #fff;
+  font-size: 1.2rem;
+  opacity: 0.92;
+  text-shadow: 0 2px 10px rgba(79,138,139,0.12);
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .container, .progress-bar {
+    max-width: 98vw;
+    width: 98vw;
+  }
+  .stats {
+    gap: 1rem;
+    font-size: 1rem;
+  }
+  header h1 {
+    font-size: 1.5rem;
+  }
 }
