@@ -155,14 +155,3 @@ A UI to configure Tesla vehicles, selecting models, colors, and features.
 **[Live Demo](https://qs3h.github.io/simple-practice-projects/tesla-configurator-vanilla-js-main/)**
 
 ---
-
-## Hosting Projects on GitHub Pages
-
-1. Create a separate GitHub repository for each project, or one for all projects if you prefer.
-2. Push the project files to the repository.
-3. Go to the repository settings, find the "Pages" section, and enable GitHub Pages (usually from the `main` branch and `/root` or `/docs` folder).
-4. Copy the generated GitHub Pages link and update the corresponding **Live Demo** link above.
-
----
-
-Feel free to contribute or use these projects for learning and practice!
