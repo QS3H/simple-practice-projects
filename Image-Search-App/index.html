@@ -25,6 +25,14 @@
     <header>
       <div class="app-header">
         <h1>Image Search App</h1>
+        <nav class="main-nav">
+          <button id="tab-search" class="tab-btn active" aria-label="Search Tab">
+            <i class="fas fa-search"></i> Search
+          </button>
+          <button id="tab-favorites" class="tab-btn" aria-label="Favorites Tab">
+            <i class="fas fa-heart"></i> Favorites
+          </button>
+        </nav>
         <button id="theme-toggle" aria-label="Toggle dark/light mode">
           <i class="fas fa-moon" aria-hidden="true"></i>
         </button>
@@ -103,38 +111,44 @@
       </form>
     </header>
 
-    <main>
-      <div id="status-message" aria-live="polite"></div>
+    <main id="main-content">
+      <section id="results-section">
+        <div id="results">
+          <div id="status-message" aria-live="polite"></div>
 
-      <section aria-label="Search results">
-        <div class="search-results">
-          <!-- Results will be populated by JavaScript -->
-        </div>
+          <div class="search-results">
+            <!-- Results will be populated by JavaScript -->
+          </div>
 
-        <div class="loading-indicator" aria-hidden="true">
-          <div class="spinner"></div>
-          <p>Loading images...</p>
-        </div>
+          <div class="loading-indicator" aria-hidden="true">
+            <div class="spinner"></div>
+            <p>Loading images...</p>
+          </div>
 
-        <button
-          id="show-more-button"
-          aria-label="Load more images"
-          style="display: none"
-        >
-          Show More
-        </button>
-      </section>
-
-      <section id="favorites-container" aria-label="Favorite images">
-        <div class="favorites-header">
-          <h2>Favorites</h2>
-          <button id="toggle-favorites" aria-label="Toggle favorites display">
-            <i class="fas fa-heart" aria-hidden="true"></i>
-            <span class="count-badge" aria-label="Number of favorites"></span>
+          <button
+            id="show-more-button"
+            aria-label="Load more images"
+            style="display: none"
+          >
+            Show More
           </button>
         </div>
-        <div class="favorites-grid">
-          <!-- Favorites will be populated by JavaScript -->
+      </section>
+      <section id="favorites-section" style="display: none">
+        <h2>Your Favorites</h2>
+        <div id="favorites-list">
+          <div id="favorites-container" aria-label="Favorite images">
+            <div class="favorites-header">
+              <h2>Favorites</h2>
+              <button id="toggle-favorites" aria-label="Toggle favorites display">
+                <i class="fas fa-heart" aria-hidden="true"></i>
+                <span class="count-badge" aria-label="Number of favorites"></span>
+              </button>
+            </div>
+            <div class="favorites-grid">
+              <!-- Favorites will be populated by JavaScript -->
+            </div>
+          </div>
         </div>
       </section>
     </main>

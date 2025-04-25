@@ -23,6 +23,60 @@ const $$ = (selector) => document.querySelectorAll(selector);
 
 // Application Initialization
 document.addEventListener("DOMContentLoaded", () => {
+  // --- FAVORITES TAB LOGIC ---
+  const tabSearch = document.getElementById('tab-search');
+  const tabFavorites = document.getElementById('tab-favorites');
+  const resultsSection = document.getElementById('results-section');
+  const favoritesSection = document.getElementById('favorites-section');
+
+  function showTab(tab) {
+    if (tab === 'search') {
+      tabSearch.classList.add('active');
+      tabFavorites.classList.remove('active');
+      resultsSection.style.display = '';
+      favoritesSection.style.display = 'none';
+    } else {
+      tabSearch.classList.remove('active');
+      tabFavorites.classList.add('active');
+      resultsSection.style.display = 'none';
+      favoritesSection.style.display = '';
+      renderFavoritesTab();
+    }
+  }
+
+  function renderFavoritesTab() {
+    const container = document.getElementById('favorites-list');
+    container.innerHTML = '';
+    if (!state.favorites.length) {
+      container.innerHTML = '<div class="no-favorites">No favorites yet. Start adding some!</div>';
+      return;
+    }
+    state.favorites.forEach(img => {
+      const div = document.createElement('div');
+      div.className = 'favorite-image';
+      div.innerHTML = `<img src="${img.urls.small}" alt="${img.alt_description || 'Favorite image'}" loading="lazy"><button class="remove-fav" data-id="${img.id}" title="Remove from favorites">&times;</button>`;
+      container.appendChild(div);
+    });
+    container.querySelectorAll('.remove-fav').forEach(btn => {
+      btn.onclick = e => {
+        const id = btn.getAttribute('data-id');
+        toggleFavorite(state.favorites.find(f => f.id === id));
+        renderFavoritesTab();
+      };
+    });
+    container.querySelectorAll('img').forEach(img => {
+      img.onclick = () => {
+        const fav = state.favorites.find(f => f.urls.small === img.src);
+        if (fav) openModal(fav);
+      };
+    });
+  }
+
+  tabSearch && tabSearch.addEventListener('click', () => showTab('search'));
+  tabFavorites && tabFavorites.addEventListener('click', () => showTab('favorites'));
+
+  // --- END FAVORITES TAB LOGIC ---
+
   initializeApp();
   setupEventListeners();
 });
