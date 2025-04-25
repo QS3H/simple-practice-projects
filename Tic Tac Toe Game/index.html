@@ -8,20 +8,49 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="game">
-      <div class="title"><span>X O</span> Game</div>
-
-      <div class="sqr" id="item1" onclick="performLogic(this.id)"></div>
-      <div class="sqr" id="item2" onclick="performLogic(this.id)"></div>
-      <div class="sqr" id="item3" onclick="performLogic(this.id)"></div>
-
-      <div class="sqr" id="item4" onclick="performLogic(this.id)"></div>
-      <div class="sqr" id="item5" onclick="performLogic(this.id)"></div>
-      <div class="sqr" id="item6" onclick="performLogic(this.id)"></div>
-
-      <div class="sqr" id="item7" onclick="performLogic(this.id)"></div>
-      <div class="sqr" id="item8" onclick="performLogic(this.id)"></div>
-      <div class="sqr" id="item9" onclick="performLogic(this.id)"></div>
+    <canvas id="particle-bg"></canvas>
+    <div class="container">
+      <div class="header">
+        <div class="title"><span>X O</span> Game</div>
+        <div class="mode-select">
+          <label>Mode:</label>
+          <select id="modeSelect">
+            <option value="pvp">Player vs Player</option>
+            <option value="easy">Player vs Computer (Easy)</option>
+            <option value="hard">Player vs Computer (Hard)</option>
+          </select>
+        </div>
+        <div class="player-names">
+          <input type="text" id="player1" placeholder="Player 1 Name" maxlength="10" />
+          <input type="text" id="player2" placeholder="Player 2/AI Name" maxlength="10" />
+        </div>
+      </div>
+      <div class="scoreboard">
+        <div><span id="scoreX">0</span> Wins</div>
+        <div><span id="scoreO">0</span> Wins</div>
+        <div><span id="scoreDraw">0</span> Draws</div>
+      </div>
+      <div class="game" id="gameBoard">
+        <div class="sqr" id="item1" data-index="1"></div>
+        <div class="sqr" id="item2" data-index="2"></div>
+        <div class="sqr" id="item3" data-index="3"></div>
+        <div class="sqr" id="item4" data-index="4"></div>
+        <div class="sqr" id="item5" data-index="5"></div>
+        <div class="sqr" id="item6" data-index="6"></div>
+        <div class="sqr" id="item7" data-index="7"></div>
+        <div class="sqr" id="item8" data-index="8"></div>
+        <div class="sqr" id="item9" data-index="9"></div>
+      </div>
+      <div class="controls">
+        <button id="restartBtn">Restart Game</button>
+        <button id="resetScoreBtn">Reset Scoreboard</button>
+      </div>
+      <div class="status" id="status"></div>
     </div>
+    <canvas id="confettiCanvas"></canvas>
+    <audio id="moveSound" src="https://cdn.jsdelivr.net/gh/terkelg/awesome-creative-audio@master/audio/click.ogg"></audio>
+    <audio id="winSound" src="https://cdn.jsdelivr.net/gh/terkelg/awesome-creative-audio@master/audio/success.ogg"></audio>
+    <audio id="drawSound" src="https://cdn.jsdelivr.net/gh/terkelg/awesome-creative-audio@master/audio/neutral.ogg"></audio>
+    <audio id="errorSound" src="https://cdn.jsdelivr.net/gh/terkelg/awesome-creative-audio@master/audio/error.ogg"></audio>
   </body>
 </html>
