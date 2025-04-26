@@ -11,25 +11,44 @@
     <main>
       <div class="container">
         <h1>Body Mass Index (BMI) Calculator</h1>
-        <b>Your Height (cm):</b>
-        <input
-          type="number"
-          class="input"
-          id="height"
-          placeholder="Enter Your Height In cm"
-        />
-        <b>Your Weight (kg):</b>
-        <input
-          type="number"
-          class="input"
-          id="weight"
-          placeholder="Enter Your Weight In kg"
-        />
+        <div class="unit-toggle">
+          <label><input type="radio" name="unit" value="metric" checked /> Metric (cm/kg)</label>
+          <label><input type="radio" name="unit" value="imperial" /> Imperial (in/lb)</label>
+        </div>
+        <div class="input-group">
+          <b>Your Height:</b>
+          <input type="number" class="input" id="height" placeholder="Enter Height" />
+        </div>
+        <div class="input-group">
+          <b>Your Weight:</b>
+          <input type="number" class="input" id="weight" placeholder="Enter Weight" />
+        </div>
         <button class="btn" id="btn">Calculate BMI</button>
+        <div class="bmi-visual">
+          <div class="bmi-progress-bg">
+            <div class="bmi-progress-bar" id="bmi-progress-bar"></div>
+            <span class="bmi-value" id="bmi-value"></span>
+          </div>
+        </div>
         <input disabled type="text" id="bmi-result" class="input" />
         <h2 class="info-text">
           Weight Condition: <span id="weight-condition"></span>
+          <span class="info-icon" id="info-icon" title="Show BMI Info">ℹ️</span>
         </h2>
+        <div class="bmi-info-popup" id="bmi-info-popup">
+          <ul>
+            <li><strong>Underweight:</strong> BMI &lt; 18.5</li>
+            <li><strong>Normal:</strong> 18.5 ≤ BMI ≤ 24.9</li>
+            <li><strong>Overweight:</strong> 25 ≤ BMI ≤ 29.9</li>
+            <li><strong>Obesity:</strong> BMI ≥ 30</li>
+          </ul>
+        </div>
+        <div class="error-message" id="error-message"></div>
+        <div class="history-panel" id="history-panel">
+          <h3>History</h3>
+          <ul id="history-list"></ul>
+          <button class="btn btn-clear" id="clear-history">Clear History</button>
+        </div>
       </div>
     </main>
   </body>
