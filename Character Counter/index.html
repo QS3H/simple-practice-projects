@@ -9,25 +9,73 @@
   </head>
   <body>
     <main class="container">
+      <div class="toolbar">
+        <label for="max-length" class="toolbar-label" id="label-max-length">Max Length</label>
+        <input type="number" id="max-length" min="10" max="1000" value="120" aria-labelledby="label-max-length" />
+        <label for="language" class="toolbar-label" id="label-language">Language</label>
+        <select id="language" aria-labelledby="label-language">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="ar">العربية</option>
+        </select>
+        <div class="theme-toggle">
+          <input type="checkbox" id="theme-switch" />
+          <label for="theme-switch" class="switch-label">
+            <span class="sun">☀️</span>
+            <span class="moon">🌙</span>
+          </label>
+        </div>
+      </div>
       <h1>Real-Time Character Counter</h1>
-      <textarea
-        id="textarea"
-        class="textarea"
-        placeholder="Please write your text here..."
-        maxlength="120"
-      ></textarea>
+      <div class="textarea-group">
+        <textarea
+          id="textarea"
+          class="textarea"
+          placeholder=" "
+          maxlength="120"
+          aria-label="Text input area"
+          rows="6"
+          aria-describedby="stats-panel"
+        ></textarea>
+        <label for="textarea" class="floating-label" id="floating-label">Please write your text here...</label>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
       <div class="counter">
         <p>
-          Total Characters:
+          <span id="stat-characters-label">Total Characters:</span>
           <span class="total-characters" id="total-characters">0</span>
         </p>
         <p>
-          Remaining:
-          <span class="remaining-characters" id="remaining-characters"
-            >120</span
-          >
+          <span id="stat-remaining-label">Remaining:</span>
+          <span class="remaining-characters" id="remaining-characters">120</span>
         </p>
+        <p>
+          <span id="stat-words-label">Words:</span>
+          <span class="word-count" id="word-count">0</span>
+        </p>
+        <p>
+          <span id="stat-sentences-label">Sentences:</span>
+          <span class="sentence-count" id="sentence-count">0</span>
+        </p>
+        <p>
+          <span id="stat-paragraphs-label">Paragraphs:</span>
+          <span class="paragraph-count" id="paragraph-count">0</span>
+        </p>
+        <button class="copy-btn" id="copy-btn" title="Copy text" aria-label="Copy"><span>📋</span></button>
+        <button class="undo-btn" id="undo-btn" title="Undo" aria-label="Undo"><span>↶</span></button>
+        <button class="redo-btn" id="redo-btn" title="Redo" aria-label="Redo"><span>↷</span></button>
+        <button class="download-btn" id="download-btn" title="Download as text file" aria-label="Download"><span>⬇️</span></button>
       </div>
+      <div class="stats-panel" id="stats-panel" aria-live="polite">
+        <div><span id="stat-avgword-label">Avg. Word Length:</span> <span id="avg-word-length">0</span></div>
+        <div><span id="stat-longestword-label">Longest Word:</span> <span id="longest-word">-</span></div>
+        <div><span id="stat-readtime-label">Reading Time:</span> <span id="reading-time">0s</span></div>
+      </div>
+      <div class="confetti" id="confetti" aria-hidden="true"></div>
     </main>
   </body>
 </html>
