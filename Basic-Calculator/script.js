@@ -21,7 +21,6 @@ for (let i = 0; i < buttonsEl.length; i++) {
 
 function clearResult() {
   inputFieldEl.value = "";
-  // No animation on clear
 }
 
 function calculateResult() {
@@ -37,7 +36,6 @@ function calculateResult() {
 function appendValue(buttonValue) {
   if (inputFieldEl.value === "Error") inputFieldEl.value = "";
   inputFieldEl.value += buttonValue;
-  // No animation on input
 }
 
 function animateResult() {
