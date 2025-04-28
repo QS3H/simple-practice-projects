@@ -4,27 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>English Dictionary App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <script defer src="script.js"></script>
   </head>
   <body>
     <main>
       <div class="container">
-        <h1 class="heading">English Dictionary</h1>
-        <input
-          type="text"
-          class="input"
-          id="input"
-          placeholder="Search a Word"
-        />
+        <div class="header-row">
+          <h1 class="heading">English Dictionary</h1>
+          <button id="theme-toggle" aria-label="Toggle theme" title="Switch theme">
+            <span id="theme-icon">🌙</span>
+          </button>
+        </div>
+        <div class="search-section">
+          <input
+            type="text"
+            class="input"
+            id="input"
+            placeholder="Search a word..."
+            autocomplete="off"
+          />
+          <ul id="autocomplete-list" class="autocomplete-list"></ul>
+        </div>
+        <div class="actions-row">
+          <button id="favorite-btn" title="Add to favorites">☆</button>
+        </div>
         <p class="information-text" id="info-text">
           Type a word and press enter
         </p>
         <div class="meaning-container" id="meaning-container">
-          <p>Word Title: <span id="title" class="title">___</span></p>
-          <p>Meaning: <span id="meaning" class="meaning">___</span></p>
+          <h2 id="title" class="title">___</h2>
+          <p><span class="label">Phonetic:</span> <span id="phonetic">___</span></p>
           <div>
-            <audio id="audio" src="" controls></audio>
+            <audio id="audio" src="" controls style="display:none;"></audio>
+          </div>
+          <p><span class="label">Meaning:</span> <span id="meaning" class="meaning">___</span></p>
+          <p><span class="label">Example:</span> <span id="example">___</span></p>
+          <p><span class="label">Synonyms:</span> <span id="synonyms">___</span></p>
+          <p><span class="label">Antonyms:</span> <span id="antonyms">___</span></p>
+        </div>
+        <div class="history-favorites">
+          <div>
+            <h3>Recent Searches</h3>
+            <ul id="history-list"></ul>
+          </div>
+          <div>
+            <h3>Favorites</h3>
+            <ul id="favorites-list"></ul>
           </div>
         </div>
       </div>
