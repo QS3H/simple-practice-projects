@@ -4,19 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notes App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="styles.css" />
     <script defer src="script.js"></script>
   </head>
   <body>
     <div class="container">
-      <h1><img src="./images/notes.png" alt="notes-icon" /> Notes</h1>
-      <button class="btn">
-        <img src="./images/edit.png" alt="edit-icon" /> Create Notes
-      </button>
+      <header>
+        <h1><img src="./images/notes.png" alt="notes-icon" /> Notes</h1>
+        <div class="header-controls">
+          <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search notes..." />
+            <i class="fas fa-search"></i>
+          </div>
+          <button id="darkModeToggle">
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </header>
+
+      <div class="controls">
+        <button class="btn create-btn">
+          <img src="./images/edit.png" alt="edit-icon" /> Create Note
+        </button>
+        <div class="formatting-tools" style="display: none">
+          <button class="format-btn" data-format="bold">
+            <i class="fas fa-bold"></i>
+          </button>
+          <button class="format-btn" data-format="italic">
+            <i class="fas fa-italic"></i>
+          </button>
+          <button class="format-btn" data-format="underline">
+            <i class="fas fa-underline"></i>
+          </button>
+          <button class="format-btn" data-format="list">
+            <i class="fas fa-list"></i>
+          </button>
+          <select class="tag-select">
+            <option value="">Select Tag</option>
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="ideas">Ideas</option>
+            <option value="tasks">Tasks</option>
+          </select>
+        </div>
+      </div>
+
       <div class="notes-container">
-        <!-- <p contenteditable="true" class="input-box">
-          <img src="./images/delete.png" alt="delete-icon" />
-        </p> -->
+        <!-- Notes will be added here dynamically -->
       </div>
     </div>
   </body>
