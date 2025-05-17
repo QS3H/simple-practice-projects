@@ -147,6 +147,14 @@ header {
   animation: slideIn 0.3s ease-out;
 }
 
+.note-content {
+  min-height: 100px;
+  outline: none;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -180,14 +188,28 @@ header {
   gap: 0.5rem;
 }
 
-.note-actions img {
+.note-actions img,
+.note-actions i {
   width: 20px;
+  height: 20px;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.3s ease;
+  color: var(--text-color);
 }
 
 .note-actions img:hover {
   transform: scale(1.1);
+}
+
+.note-actions i.save-btn {
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.note-actions i.save-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  color: var(--primary-color);
 }
 
 .char-counter {
