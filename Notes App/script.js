@@ -13,19 +13,34 @@ if (localStorage.getItem("darkMode") === "enabled") {
 
 // Load notes from localStorage
 function showNotes() {
-  notesContainer.innerHTML = localStorage.getItem("notes") || "";
-  attachNoteListeners();
+  const savedNotes = localStorage.getItem("notes");
+  if (savedNotes) {
+    notesContainer.innerHTML = savedNotes;
+    attachNoteListeners();
+    // Update character counts for all loaded notes
+    document.querySelectorAll(".input-box").forEach((note) => {
+      const content = note.querySelector(".note-content");
+      const counter = note.querySelector(".char-counter");
+      if (content && counter) {
+        counter.textContent = `${content.textContent.trim().length} characters`;
+      }
+    });
+  }
 }
 
 function updateStorage() {
   localStorage.setItem("notes", notesContainer.innerHTML);
+  localStorage.setItem(
+    "darkMode",
+    document.body.classList.contains("dark-mode") ? "enabled" : "disabled"
+  );
 }
 
 function createNoteElement() {
   const timestamp = new Date().toLocaleString();
   const noteHtml = `
-    <div class="input-box" contenteditable="true">
-      <div class="note-content"></div>
+    <div class="input-box">
+      <div class="note-content" contenteditable="true"></div>
       <div class="note-footer">
         <span class="note-tag"></span>
         <span class="char-counter">0 characters</span>
@@ -49,11 +64,19 @@ function attachNoteListeners() {
     const counter = note.querySelector(".char-counter");
     const saveBtn = note.querySelector(".save-btn");
 
+    // Initial character count
+    if (content && counter) {
+      counter.textContent = `${content.textContent.trim().length} characters`;
+    }
+
+    // Update character count on input
     content.addEventListener("input", () => {
-      counter.textContent = `${content.textContent.length} characters`;
+      const charCount = content.textContent.trim().length;
+      counter.textContent = `${charCount} characters`;
       updateStorage();
     });
 
+    // Save note as text file
     saveBtn.addEventListener("click", () => {
       const text = content.textContent;
       const blob = new Blob([text], { type: "text/plain" });
@@ -73,6 +96,7 @@ createBtn.addEventListener("click", () => {
   notesContainer.appendChild(inputBox);
   formatTools.style.display = "flex";
   attachNoteListeners();
+  updateStorage();
 });
 
 notesContainer.addEventListener("click", function (e) {
@@ -87,6 +111,7 @@ document.querySelectorAll(".format-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     const format = btn.dataset.format;
     document.execCommand(format, false, null);
+    updateStorage();
   });
 });
 
